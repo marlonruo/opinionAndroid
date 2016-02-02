@@ -48,6 +48,8 @@
 
 
 <script>
+var lati
+var long
 /*$(document).ready(function(){
 	$("#ciudades").html("no");
         $.get("http://pixelweather.com/leer.php", {}, function(data) {
@@ -65,7 +67,7 @@
 </head>
 
 <body onLoad="inicio()">
-    <div id="contenedor" style="overflow:auto; overflow-x:hidden">
+    <div id="contenedor" style="overflow:hidden">
     
     
     
@@ -73,36 +75,72 @@
      
      
     
-   	  <div id="login">
+   	  <div id="login" style="display:block">
        	<div class="t1" style="width:100%; text-align:center; top:15%">Crear una cuenta para comenzar:</div>
             
-        <div class="campos" style="left:8%; width:84%; height:8%; top:21%">
+        <div class="campos" style="left:8%; width:84%; height:8%; top:20%">
         	<p class="crear" style="margin-left:5%">Nombre:</p>
             <input class="campo_texto" type="text">
         </div>
-        <div class="campos" style="left:8%; width:84%; height:8%; top:33%">
+        <div class="campos" style="left:8%; width:84%; height:8%; top:31%">
         	<p class="crear" style="margin-left:5%">Email:</p>
             <input class="campo_texto" type="text">
         </div>
+        <div class="campos" style="left:8%; width:84%; height:8%; top:42%">
+        	<p class="crear" style="margin-left:5%">Contraseña:</p>
+            <input class="campo_texto" type="text">
+        </div>
             
-        <div id="bt_signup" class="botones" style="left:8%; width:84%; height:8%; top:45%; background-color:#C7004B; cursor:pointer">
+        <div id="bt_signup" class="botones" style="left:8%; width:84%; height:8%; top:53%; background-color:#C7004B; cursor:pointer">
        	  <p class="bot" style="width:100%; text-align:center">Sign Up</p>
         </div>
             
-        <div class="t1" style="width:100%; text-align:center; top:58%">- o también puedes -</div>
+        <div class="t1" style="width:100%; text-align:center; top:65%">- o también puedes -</div>
             
-        <div class="botones" style="left:8%; width:84%; height:8%; top:65%; background-color:#33508C; border-color:#33508C; cursor:pointer">
+        <div class="botones" style="left:8%; width:84%; height:8%; top:71%; background-color:#33508C; border-color:#33508C; cursor:pointer" onClick="window.plugins.socialsharing.shareViaFacebook('opinion suma puntos.', 'Opinion APP', 'http://marlonruo.com/opinion/logo.png', 'http://marlonruo.com/opinion/')">
    	    	<img src="imagenes/face.png" style="top:10%; height:80%; position:absolute; left:5%"/>
             <p class="red" style="width:80%; text-align:left; left:20%">Compartir en Facebook</p>
         </div>
-        <div class="botones" style="left:8%; width:84%; height:8%; top:77%; background-color:#55C2EC; border-color:#55C2EC; cursor:pointer">
+        <div class="botones" style="left:8%; width:84%; height:8%; top:82%; background-color:#55C2EC; border-color:#55C2EC; cursor:pointer" onClick="window.plugins.socialsharing.shareViaTwitter('opinion suma puntos.', 'Opinion APP', 'http://marlonruo.com/opinion/logo.png', 'http://marlonruo.com/opinion/')">
         	<img src="imagenes/twitter.png" style="top:10%; height:80%; position:absolute; left:5%"/>
             <p class="red" style="width:80%; text-align:left; left:20%">Compartir en Twitter</p>
         </div>
             
-            <div id="bt_log" class="t1" style="width:100%; text-align:center; top:90%; cursor:pointer">¿Ya tienes una cuenta? Log in <img src="imagenes/flecha.png" height="8px"/></div>
+            <div id="bt_log" class="t1" style="width:100%; text-align:center; top:94%; cursor:pointer">¿Ya tienes una cuenta? Log in <img src="imagenes/flecha.png" height="8px"/></div>
             
       </div><!--fin login-->
+      
+      
+      
+      
+      <div id="log" style="display:none">
+       	<div class="t1" style="width:100%; text-align:center; top:23%">Log in con tu cuenta</div>
+            
+        <div class="campos" style="left:8%; width:84%; height:8%; top:30%">
+        	<p class="crear" style="margin-left:5%">Email:</p>
+            <input class="campo_texto" type="text">
+        </div>
+        <div class="campos" style="left:8%; width:84%; height:8%; top:42%">
+        	<p class="crear" style="margin-left:5%">Contraseña:</p>
+            <input class="campo_texto" type="text">
+        </div>
+        
+        <div class="botones" style="left:8%; width:84%; height:8%; top:54%; background-color:#33508C; border-color:#33508C; cursor:pointer">
+   	    	<img src="imagenes/face.png" style="top:10%; height:80%; position:absolute; left:5%"/>
+            <p class="red" style="width:80%; text-align:left; left:20%">Conectate con Facebook</p>
+        </div>
+            
+        <div id="bt_signup" class="botones" style="left:8%; width:84%; height:8%; top:66%; background-color:#C7004B; cursor:pointer">
+       	  <p class="bot" style="width:100%; text-align:center">Login</p>
+        </div>
+
+            
+      </div><!--fin login-->
+      
+      
+      
+      
+      
       
       
       <!--///////////////////////////////////-->
@@ -111,23 +149,23 @@
       <div id="votacion" style="display:none; margin-left:100%">
       		<div class="t1" style="width:100%; text-align:center; top:15%">Selecciona la categoría:</div>
             
-            <div id="bt_imagenes" class="campos" style="left:8%; width:84%; height:8%; top:21%">
+            <div id="bt_imagenes" class="campos bt_imagenes" style="left:8%; width:84%; height:8%; top:21%">
                 <p class="crear" style="left:5%">Imágenes</p>
                 <p class="crear" style="right:5%; position:absolute; text-align:right">(20 pts)</p>
        	 	</div>
-            <div id="bt_videos" class="campos" style="left:8%; width:84%; height:8%; top:33%">
+            <div id="bt_videos" class="campos bt_videos" style="left:8%; width:84%; height:8%; top:33%">
                 <p class="crear" style="left:5%">Videos</p>
                 <p class="crear" style="right:5%; position:absolute; text-align:right">(2 pts)</p>
        	 	</div>
-            <div id="bt_textos" class="campos" style="left:8%; width:84%; height:8%; top:45%">
+            <div id="bt_textos" class="campos bt_textos" style="left:8%; width:84%; height:8%; top:45%">
                 <p class="crear" style="left:5%">Textos</p>
                 <p class="crear" style="right:5%; position:absolute; text-align:right">(10 pts)</p>
        	 	</div>
-            <div id="bt_cuestionarios" class="campos" style="left:8%; width:84%; height:8%; top:57%">
+            <div id="bt_cuestionarios" class="campos bt_cuestionarios" style="left:8%; width:84%; height:8%; top:57%">
                 <p class="crear" style="left:5%">Cuestionarios</p>
                 <p class="crear" style="right:5%; position:absolute; text-align:right">(5 pts)</p>
        	 	</div>
-            <div id="bt_check" class="campos" style="left:8%; width:84%; height:8%; top:69%">
+            <div id="bt_check" class="campos bt_check" style="left:8%; width:84%; height:8%; top:69%">
                 <p class="crear" style="left:5%">Check In</p>
                 <p class="crear" style="right:5%; position:absolute; text-align:right">(2 pts)</p>
        	 	</div>
@@ -144,8 +182,9 @@ votar 1 vez por campaña
       
       
       
-      <div id="galeria" style="height:auto; top:9%; display:none">
-	  		<img src="imagenes/galeria/im1.jpg" width="100%" style="position:relative; float:left"/>
+      <div id="galeria" style="top:9%; height:91%; display:none; overflow:auto">
+      		<div style="position:absolute; height:auto; width:100%">
+	  		<img id="im1" src="imagenes/galeria/im1.jpg" width="100%" style="position:relative; float:left"/>
             <div class="estrellas" style="height:8%; width:100%; position:relative; float:left">
             	<div style="position:absolute; width:100%; height:100%;">
        	    		<img class="es2" src="imagenes/estrella2.png" style="position:absolute; left:10%; height:10px; display:none"/>
@@ -161,7 +200,7 @@ votar 1 vez por campaña
                     <img class="es2" src="imagenes/estrella.png" style="position:absolute; left:82%; height:10px; display:none"/>  
                 </div>
             </div>
-            <img src="imagenes/galeria/im2.jpg" width="100%" style="position:relative; float:left"/>
+            <img id="im2" src="imagenes/galeria/im2.jpg" width="100%" style="position:relative; float:left"/>
             <div class="estrellas" style="height:8%; width:100%; position:relative; float:left">
             	<div style="position:absolute; width:100%; height:100%;">
        	    		<img class="es2" src="imagenes/estrella2.png" style="position:absolute; left:10%; height:10px; display:none"/>
@@ -176,6 +215,7 @@ votar 1 vez por campaña
                     <img class="es2" src="imagenes/estrella.png" style="position:absolute; left:64%; height:10px"/> 
                     <img class="es2" src="imagenes/estrella.png" style="position:absolute; left:82%; height:10px; display:none"/>  
                 </div>
+            </div>
             </div>
       </div><!--fin galeria-->
       
@@ -183,9 +223,12 @@ votar 1 vez por campaña
       
       <div id="ubicacion" style="display:none">
         <div class="t1" style="width:100%; text-align:center; top:15%">¡Comparte tu ubicación al instante!</div>
+           
+          
             
-        <div class="campos" style="left:8%; width:84%; height:8%; top:21%; background:url(imagenes/ubi.png) no-repeat; background-size:auto 60%; background-position:95%">
+        <div id="submit" class="campos" style="left:8%; width:84%; height:8%; top:21%; background:url(imagenes/ubi.png) no-repeat; background-size:auto 60%; background-position:95%">
           <p class="crear" style="left:5%">OBTÉN TU UBICACIÓN</p>
+          <input id="latlng" type="text" value="40.714224,-73.961452"> 
         </div>
         
         <div class="campos" style="left:8%; width:84%; height:8%; top:33%;">
@@ -195,16 +238,48 @@ votar 1 vez por campaña
         
         <div id="map" style="position:absolute; top:45%; width:84%; left:8%; height:35%"></div>
     <script>
-      var map;
-      function initMap() {
-        map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: -34.397, lng: 150.644},
-          zoom: 8
+function initMap() {
+  var map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 8,
+    center: {lat: 40.731, lng: -73.997}
+  });
+  var geocoder = new google.maps.Geocoder;
+  var infowindow = new google.maps.InfoWindow;
+
+  document.getElementById('submit').addEventListener('click', function() {
+    geocodeLatLng(geocoder, map, infowindow);
+  });
+}
+
+function geocodeLatLng(geocoder, map, infowindow) {
+  var input = document.getElementById('latlng').value;
+  var latlngStr = input.split(',', 2);
+  var latlng = {lat: parseFloat(latlngStr[0]), lng: parseFloat(latlngStr[1])};
+  geocoder.geocode({'location': latlng}, function(results, status) {
+    if (status === google.maps.GeocoderStatus.OK) {
+      if (results[1]) {
+        map.setZoom(11);
+        var marker = new google.maps.Marker({
+          position: latlng,
+          map: map
         });
+        //infowindow.setContent(results[1].formatted_address);
+        //infowindow.open(map, marker);
+      } else {
+        window.alert('No results found');
       }
+    } else {
+      window.alert('Geocoder failed due to: ' + status);
+    }
+  });
+}
+
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?sensor=false&callback=initMap"
-    async defer></script>
+        async defer></script>
+    
+    
+
     
     	<div class="t1" style="width:100%; text-align:center; top:84%">- compártela con tu amigos -</div>
         
@@ -246,23 +321,70 @@ votar 1 vez por campaña
           <p class="crear" style="right:5%; position:absolute; text-align:right">(1565 pts)</p>
         </div>
         
-        <div class="campos" style="left:8%; width:84%; height:8%; top:33%;">
+        <div id="bt_canjear" class="campos" style="left:8%; width:84%; height:8%; top:33%;">
           <p class="crear" style="left:5%">CANJEAR MIS PUNTOS</p>
+          <div id="canjear" style="width:80%; height:400%; background-color:rgba(255,255,255,1.00); top:92%; position:absolute; padding-left:10%; padding-right:10%; display:none; overflow:hidden">
+          	 <div id="can1" style="position:absolute; width:80%; height:25%; border-bottom:1px solid rgba(217,217,217,1.00); color:#000000"><p style="left:0%">Tiempo Aire <b>$20</b></p><p style="right:0%">(200pts)</p></div>
+             <div id="can2" style="position:absolute; width:80%; height:25%; border-bottom:1px solid rgba(217,217,217,1.00); color:#000000; top:25%"><p style="left:0%">Tiempo Aire <b>$50</b></p><p style="right:0%">(500pts)</p></div>	
+             <div id="can3" style="position:absolute; width:80%; height:25%; border-bottom:1px solid rgba(217,217,217,1.00); color:#000000; top:50%"><p style="left:0%">Dinero iTunes <b>$100</b></p><p style="right:0%">(1000pts)</p></div>
+             <div id="can4" style="position:absolute; width:80%; height:25%; border-bottom:1px solid rgba(217,217,217,1.00); color:#000000; top:75%"><p style="left:0%">Dinero iTunes <b>$200</b></p><p style="right:0%">(2000pts)</p></div>	
+          </div>
         </div>
         
-        <div class="campos" style="left:8%; width:84%; height:8%; top:45%;">
+        <div id="bt_movimientos" class="campos" style="left:8%; width:84%; height:8%; top:45%;">
           <p class="crear" style="left:5%">VER MIS MOVIMIENTOS</p>
+          <div id="movimientos" style="width:80%; height:400%; background-color:rgba(255,255,255,1.00); top:92%; position:absolute; padding-left:10%; padding-right:10%; display:none; overflow:hidden">
+          	 <div style="position:absolute; width:80%; height:25%; border-bottom:1px solid rgba(217,217,217,1.00); color:#000000"><p style="left:0%">Tiempo Aire - 200 pts <p style="right:0%">10/ene/2016</p></div>
+             <div style="position:absolute; width:80%; height:25%; border-bottom:1px solid rgba(217,217,217,1.00); color:#000000; top:25%"><p style="left:0%">Encuesta + 60 pts</p><p style="right:0%">3/ene/2016</p></div>	
+             <div style="position:absolute; width:80%; height:25%; border-bottom:1px solid rgba(217,217,217,1.00); color:#000000; top:50%"><p style="left:0%">Votación + 30 pts</p><p style="right:0%">2/ene/2016</p></div>
+             <div style="position:absolute; width:80%; height:25%; border-bottom:1px solid rgba(217,217,217,1.00); color:#000000; top:75%"><p style="left:0%"><b>Saldo Total</b></p><p style="right:0%">1565 pts</p></div>	
+          </div>
+          
+          
         </div>
         
-        <div class="campos" style="left:8%; width:84%; height:8%; top:57%;">
+        <div id="bt_alta" class="campos" style="left:8%; width:84%; height:8%; top:57%;">
           <p class="crear" style="left:5%">DAR DE ALTA CUENTA</p>
+          <div id="alta" style="width:80%; height:300%; background-color:rgba(255,255,255,1.00); top:92%; position:absolute; padding-left:10%; padding-right:10%; display:none; overflow:hidden">
+       	    <div style="position:absolute; width:80%; height:33%; border-bottom:1px solid rgba(217,217,217,1.00); color:#000000"><p style="left:0%">Pay Pal<div style="right:0%; position:absolute; width:50%; background-image:url(imagenes/paypal.png); height:100%; background-repeat:no-repeat; background-position:right; background-size:auto 50%"></div>
+          	 </div>
+             <div style="position:absolute; width:80%; height:33%; border-bottom:1px solid rgba(217,217,217,1.00); color:#000000; top:33%"><p style="left:0%">Oxxo (Pago)<div style="right:0%; position:absolute; width:50%; background-image:url(imagenes/oxxo.png); height:100%; background-repeat:no-repeat; background-position:right; background-size:auto 50%"></div></div>	
+             <div style="position:absolute; width:80%; height:33%; border-bottom:1px solid rgba(217,217,217,1.00); color:#000000; top:66%"><p style="left:0%">Clabe bancaria</p><div style="right:0%; position:absolute; width:50%; background-image:url(imagenes/clabe.png); height:100%; background-repeat:no-repeat; background-position:right; background-size:auto 50%"></div></div>
+          </div>
         </div>
+        
+        <script>
+        $('#bt_canjear').click(function(){
+			$('#alta').fadeOut(200)
+			$('#movimientos').fadeOut(200)
+			$('#canjear').delay(200).fadeIn(500)
+			$('#bt_movimientos').animate({top:'76%'}, 500)
+			$('#bt_alta').animate({top:'88%'}, 500)
+		})
+		
+		$('#bt_movimientos').click(function(){
+			$('#alta').fadeOut(200)
+			$('#canjear').fadeOut(200)
+			$('#movimientos').delay(200).fadeIn(500)
+			$('#bt_movimientos').animate({top:'45%'}, 500)
+			$('#bt_alta').animate({top:'88%'}, 500)
+		})
+		
+		$('#bt_alta').click(function(){
+			$('#movimientos').fadeOut(200)
+			$('#canjear').fadeOut(200)
+			$('#alta').delay(200).fadeIn(500)
+			$('#bt_movimientos').animate({top:'45%'}, 500)
+			$('#bt_alta').animate({top:'57%'}, 500)
+		})
+        </script>
+        
       </div><!--fin monedero-->
       
       
       
       <div id="canje" style="display:none">
-        <div class="t2" style="width:100%; text-align:center; top:15%">Ubicación, Wifi y  Mapa personalizado: </div>
+        <div class="t2" style="width:100%; text-align:center; top:15%">¡Feliciddes!</div>
         
         
         <div class="t1" style="width:100%; text-align:center; top:35%">
@@ -343,26 +465,65 @@ click en "Permitir" para continuar.
       </div><!--fin localizador-->
       
       
+      
+      <div id="codigo" style="display:none">
+        <div class="t1" style="width:100%; text-align:center; top:15%">¡Invita a un amigo, compartiéndo<br>tu código de cliente y obtén hasta<br>100 puntos por cada nuevo usuario!</div>
+        
+        
+        <div class="botones" style="left:8%; width:84%; height:8%; top:31%; background-color:#FBB040; border-color:#fff; cursor:pointer">
+   	    	<img src="imagenes/face.png" style="top:10%; height:80%; position:absolute; left:5%"/>
+            <p class="red" style="width:80%; text-align:left; left:20%">Comparte vía E-mail</p>
+        </div>
+        
+        <div class="botones" style="left:8%; width:84%; height:8%; top:43%; background-color:#C7004B; border-color:#fff; cursor:pointer">
+   	    	<img src="imagenes/face.png" style="top:10%; height:80%; position:absolute; left:5%"/>
+            <p class="red" style="width:80%; text-align:left; left:20%">Comparte vía SMS</p>
+        </div>
+        
+        
+        <div class="botones" style="left:8%; width:84%; height:8%; top:55%; background-color:#33508C; border-color:#33508C; cursor:pointer" onClick="window.plugins.socialsharing.shareViaFacebook('opinion suma puntos.', 'Opinion APP', 'http://marlonruo.com/opinion/logo.png', 'http://marlonruo.com/opinion/')">
+   	    	<img src="imagenes/face.png" style="top:10%; height:80%; position:absolute; left:5%"/>
+            <p class="red" style="width:80%; text-align:left; left:20%">Compartir en Facebook</p>
+        </div>
+        
+        
+        <div class="botones2" style="left:8%; width:84%; height:12%; top:74%; background:none; border-color:#fff; cursor:pointer; border-left:none; border-right:none">
+            <p class="cod" style="width:100%; text-align:center">CÓDIGO - GPW1501</p>
+        </div>
+        
+        <div id="bt_log" class="t1" style="width:100%; text-align:center; top:94%; cursor:pointer">Conocer más acerca de <img src="imagenes/flecha.png" height="8px"/></div>
+
+      </div><!--fin codigo-->
+      
+      
+      
+      
+      
+      
       </div><!--fin todo-->
       
       
       
-      <div id="opciones" style="top:9%; display:none">
+      <div id="opciones" style="top:9%; display:none; z-index:99">
       	
-        <div id="bt_votacion" class="menu" style="background-color:#7457C0; background-image:url(imagenes/ico1.png); background-repeat:no-repeat; background-size:auto 30%; background-position:15%">
+        <div id="bt_votacion" class="menu" style="background-color:#7457C0; background-image:url(imagenes/ico1.png); background-repeat:no-repeat; background-size:auto 40%; background-position:15%">
         	<p class="menu_titulo" style="left:33%">Votación</p>
         </div>
         
-        <div id="bt_monedero" class="menu" style="background-color:#C7004B; background-image:url(imagenes/ico2.png); background-repeat:no-repeat; background-size:auto 30%; background-position:15%">
+        <div id="bt_monedero" class="menu" style="background-color:#C7004B; background-image:url(imagenes/ico2.png); background-repeat:no-repeat; background-size:auto 40%; background-position:15%">
         	<p class="menu_titulo" style="left:33%">Monedero Virtual</p>
         </div>
         
-        <div id="bt_mapas" class="menu" style="background-color:#75C474; background-image:url(imagenes/ico3.png); background-repeat:no-repeat; background-size:auto 30%; background-position:15%">
+        <div id="bt_mapas" class="menu" style="background-color:#75C474; background-image:url(imagenes/ico3.png); background-repeat:no-repeat; background-size:auto 40%; background-position:15%">
         	<p class="menu_titulo" style="left:33%">Mapas / Centros...</p>
         </div>
         
-        <div id="bt_localizador" class="menu" style="background-color:#475CA9; background-image:url(imagenes/ico4.png); background-repeat:no-repeat; background-size:auto 30%; background-position:15%">
+        <div id="bt_localizador" class="menu" style="background-color:#475CA9; background-image:url(imagenes/ico4.png); background-repeat:no-repeat; background-size:auto 40%; background-position:15%">
         	<p class="menu_titulo" style="left:33%">Localizador de Wifi</p>
+        </div>
+        
+        <div id="bt_codigo" class="menu" style="background-color:#FBB040; background-image:url(imagenes/ico5.png); background-repeat:no-repeat; background-size:auto 40%; background-position:15%">
+        	<p class="menu_titulo" style="left:33%">Código de cliente</p>
         </div>
         
       </div>
@@ -373,21 +534,19 @@ click en "Permitir" para continuar.
         
         
         
-        <div id="menu">
-       	  <div style="position:absolute; height:100%; margin-left:6%; width:94%">
-       		<p id="titulo_registro" class="titulo_menu">Registro</p>
-            <p id="titulo_votacion" class="titulo_menu" style="display:none">Votación</p>
-            <p id="titulo_galeria" class="titulo_menu" style="display:none">Imagenes</p>
-            <p id="titulo_monedero" class="titulo_menu" style="display:none">Monedero Virtual</p>
-            <p id="titulo_mapa" class="titulo_menu" style="display:none">Mapas</p>
-            <p id="titulo_localizador" class="titulo_menu" style="display:none">Localizador de Wifi</p>
+        <div id="menu" style="z-index:100">
+       	  <div style="position:absolute; height:100%; margin-left:1%; width:94%">
+       		<p id="titulo_seccion" style="left:26%">Registro</p>
             
-            <p id="titulo_menu" class="titulo_menu" style="display:none">Menú</p>
-            <img id="divi1" src="imagenes/division.png" style="position:absolute; height:80%; right:45%; top:10%; display:none"/>
-            <img id="alerta" src="imagenes/alerta.png" style="position:absolute; height:70%; right:29%; top:15%; display:none"/>
-            <img id="div2" src="imagenes/division.png" style="position:absolute; height:80%; right:22%; top:10%; display:none"/> 
-            <img id="abrir_menu" src="imagenes/menu.png" style="position:absolute; height:70%; right:6%; top:15%; display:none"/>
-            <img id="cerrar_menu" src="imagenes/cerrar.png" style="position:absolute; height:70%; right:6%; top:15%; display:none"/>
+            <img id="loguito" src="imagenes/loguito.png" style="position:absolute; height:70%; left:6%; top:15%"/>
+            <img id="div2" src="imagenes/division.png" style="position:absolute; height:80%; left:20%; top:10%"/>
+            
+            <img id="div1" src="imagenes/division.png" style="position:absolute; height:80%; right:33%; top:10%; display:none"/>
+            <img id="alerta" src="imagenes/alerta.png" style="position:absolute; height:60%; right:19%; top:20%; display:none"/>
+            <img id="atras" src="imagenes/atras.png" style="position:absolute; height:50%; right:20%; top:25%; display:none"/>
+            <img id="div2" src="imagenes/division.png" style="position:absolute; height:80%; right:14%; top:10%; display:none"/> 
+            <img id="abrir_menu" src="imagenes/menu.png" style="position:absolute; height:60%; right:1%; top:20%; display:none"/>
+            <img id="cerrar_menu" src="imagenes/cerrar.png" style="position:absolute; height:60%; right:1%; top:20%; display:none"/>
             </div>
         </div><!--fin menu-->
     </div><!--fin contenedor-->
@@ -400,7 +559,7 @@ click en "Permitir" para continuar.
 				var $window = $(window);
 				width = $window.width();
 				height = $window.height();
-				$('.titulo_menu').css('font-size', height/18+'px')
+				$('#titulo_seccion').css('font-size', height/20+'px')
 				$('.t1').css('font-size', height/45+'px')
 				$('.t2').css('font-size', height/7+'px')
 				$('.campo_texto').css('font-size', height/35+'px')
@@ -411,35 +570,149 @@ click en "Permitir" para continuar.
 				$('.estrellas').css('height', (height/15)+'px')
 				$('.es2').css('height', (height/24)+'px')
 				$('.es2').css('top', (height/110)+'px')
-				$('.menu_titulo').css('font-size', (height/13)+'px')
+				$('.menu_titulo').css('font-size', (height/16)+'px')
+				$('.cod').css('font-size', height/20+'px')
 	  }
 	  
 	  
+	  var at=0
+	  var reg
 	  $('#bt_signup').click(function(){
+		 $('#votacion').css('z-index', '1')
+		 $('#log').css('z-index', '0')
+		 $('#login').css('z-index', '0')
+		  
 		 $('#votacion').show()
 		 $('#votacion').css('margin-left', '100%')
 		 $('#votacion').animate({marginLeft:'0%'}, 500)
 		 $('#div1, #div2, #alerta, #abrir_menu').fadeIn(800)
-		 $('.titulo_menu').fadeOut(800)
-		 $('#titulo_votacion').stop().delay(500).fadeIn(500)
+		 $('#titulo_seccion').html('Votacion')
       })
 	  
 	  $('#bt_log').click(function(){
-		 $('#votacion').show()
-		 $('#votacion').css('margin-left', '100%')
-		 $('#votacion').animate({marginLeft:'0%'}, 500)
-		 $('#div1, #div2, #alerta, #abrir_menu').fadeIn(800)
-		 $('.titulo_menu').fadeOut(800)
-		 $('#titulo_votacion').stop().delay(500).fadeIn(500)
+		 $('#log').show()
+		 $('#log').css('z-index', '1')
+		 $('#login').css('z-index', '0')
+		 $('#log').css('margin-left', '100%')
+		 $('#log').animate({marginLeft:'0%'}, 500)
+		 $('#atras').fadeIn(800)
+		 $('#atras').css('right','1%')
+		 $('#titulo_seccion').html('Log in')
+		 at=1
+      })
+	  
+	  $('#atras').click(function(){
+		  if(at==1){
+			 $('#login').show()
+			 $('#login').css('z-index', '1')
+			 $('#log').css('z-index', '0')
+			 $('#login').css('margin-left', '100%')
+			 $('#login').animate({marginLeft:'0%'}, 500)
+			 $('#atras').hide()
+			 $('#atras').css('right','19%')
+			 $('#titulo_seccion').html('Registro')
+			 at=0
+		  }else if(at==2){
+		  	 $('#atras').fadeOut()
+			 $('#alerta').fadeIn()
+			 $('#atras').css('right','19%')
+			 
+			 $('#votacion').css('z-index', '2')
+			 $('#galeria').css('z-index', '1')
+			 $('#retroalimentacion').css('z-index', '0')
+		     $('#log').css('z-index', '0')
+		     $('#login').css('z-index', '0')
+			 $('#votacion').show()
+		     $('#votacion').css('margin-left', '100%')
+		     $('#votacion').animate({marginLeft:'0%'}, 500)
+			 $('#galeria').delay(500).fadeOut(0)
+			 $('#titulo_seccion').html('Votación')
+			 at=0
+		  }else if(at==3){	
+		   	 $('#galeria').show()
+			 $('#galeria').css('z-index', '2')
+			 $('#retroalimentacion').css('z-index', '1')
+
+			 $('#galeria').show()
+		     $('#galeria').css('margin-left', '100%')
+		     $('#galeria').animate({marginLeft:'0%'}, 500)
+			 $('#titulo_seccion').html('Galeria')
+			 at=2
+		  }else if(at==4){	
+		   	 $('#monedero').show()
+			 $('#monedero').css('z-index', '2')
+			 $('#canje').css('z-index', '1')
+
+			 $('#monedero').show()
+		     $('#monedero').css('margin-left', '100%')
+		     $('#monedero').animate({marginLeft:'0%'}, 500)
+			 $('#titulo_seccion').html('Monedero Virtual')
+			 at=0
+		  }
       })
 	  
 	  
 	  $('#bt_imagenes, #bt_videos, #bt_textos, #bt_cuestionarios, #bt_check').click(function(){
+		 $('#galeria').css('z-index', '2')
+		 $('#votacion').css('z-index', '1')
+		 $('#retroalimentacion').css('z-index', '0')
+		 $('#log').css('z-index', '0')
+		 $('#login').css('z-index', '0')
+		 
+		 $('#atras').fadeIn()
+		 $('#alerta').fadeOut()
+		 $('#atras').css('right','20%')
+		 
 		 $('#galeria').show()
 		 $('#galeria').css('margin-left', '100%')
 		 $('#galeria').animate({marginLeft:'0%'}, 500)
-		 $('.titulo_menu').fadeOut(800)
-		 $('#titulo_galeria').stop().delay(500).fadeIn(500)
+		 at=2
+      })
+	  
+	  $('.bt_imagenes').mousedown(function(){
+		 $('.bt_imagenes').css('background-color', '#C7004B')
+      })
+	   $('.bt_imagenes').mouseup(function(){
+		 $('.bt_imagenes').css('background', 'none')
+		 $('#titulo_seccion').html('Imagenes')
+		 reg="imagenes"
+      })
+	  
+	  $('.bt_videos').mousedown(function(){
+		 $('.bt_videos').css('background-color', '#C7004B')
+      })
+	   $('.bt_videos').mouseup(function(){
+		 $('.bt_videos').css('background', 'none')
+		 $('#titulo_seccion').html('Videos')
+		 reg="videos"
+      })
+	  
+	  
+	  $('.bt_textos').mousedown(function(){
+		 $('.bt_textos').css('background-color', '#C7004B')
+      })
+	   $('.bt_textos').mouseup(function(){
+		 $('.bt_textos').css('background', 'none')
+		 $('#titulo_seccion').html('Textos')
+		 reg="textos"
+      })
+	  
+	  $('.bt_cuestionarios').mousedown(function(){
+		 $('.bt_cuestionarios').css('background-color', '#C7004B')
+      })
+	   $('.bt_cuestionarios').mouseup(function(){
+		 $('.bt_cuestionarios').css('background', 'none')
+		 $('#titulo_seccion').html('Cuestionarios')
+		 reg="cuestionarios"
+      })
+	  
+	  $('.bt_check').mousedown(function(){
+		 $('.bt_check').css('background-color', '#C7004B')
+      })
+	   $('.bt_check').mouseup(function(){
+		 $('.bt_check').css('background', 'none')
+		 $('#titulo_seccion').html('Check')
+		 reg="check"
       })
 	  
 	  
@@ -450,8 +723,7 @@ click en "Permitir" para continuar.
 		 $('#opciones').css('margin-left', '100%')
 		 $('#opciones').animate({marginLeft:'0%'}, 500, 'linear')
 		 $('#todo').animate({marginLeft:'-100%'}, 500, 'linear')
-		 $('.titulo_menu').fadeOut(800)
-		 $('#titulo_menu').stop().delay(500).fadeIn(500)
+		 $('#titulo_seccion').html('Menu')
       })
 	  
 	  $('#cerrar_menu').click(function(){
@@ -459,11 +731,65 @@ click en "Permitir" para continuar.
 		 $('#cerrar_menu').fadeOut()
 		 $('#opciones').animate({marginLeft:'100%'}, 500, 'linear')
 		 $('#todo').animate({marginLeft:'0%'}, 500, 'linear')
-		 $('.titulo_menu').fadeOut(800)
-		 $('#titulo_votacion').stop().delay(500).fadeIn(500)
+		 $('#titulo_seccion').html('Votación')
       })
 	  
+	  
+	  $('#im1, #im2').click(function(){
+		 $('#votacion').css('z-index', '0')
+		 $('#galeria').css('z-index', '0')
+		 $('#log').css('z-index', '0')
+		 $('#login').css('z-index', '0')
+		 $('#ubicacion').css('z-index', '0')
+		 $('#retroalimentacion').css('z-index', '1')
+		 $('#monedero').css('z-index', '0')
+		 $('#canje').css('z-index', '0')
+		 $('#mapas').css('z-index', '0')
+		 $('#mapas_grande').css('z-index', '0')
+		 $('#localizador').css('z-index', '0')
+		 $('#codigo').css('z-index', '0')
+		  
+		 $('#retroalimentacion').show()
+		 $('#retroalimentacion').css('margin-left', '100%')
+		 $('#retroalimentacion').animate({marginLeft:'0%'}, 500)
+		 $('#titulo_seccion').html('Retroalimentacion')
+		 at=3
+      })
+	  
+	  
+	  $('#can1, #can2, #can3, #can4').click(function(){
+		 $('#atras').fadeIn()
+		 $('#alerta').fadeOut()
+		 $('#atras').css('right','20%')
+		 
+		 $('#monedero').css('z-index', '1')
+		 $('#canje').css('z-index', '2')
+		  
+		 $('#canje').show()
+		 $('#canje').css('margin-left', '100%')
+		 $('#canje').animate({marginLeft:'0%'}, 500)
+		 $('#titulo_seccion').html('Canje')
+		 at=4
+      })
+	  
+	  
+	  
+	  
 	  $('#bt_votacion').click(function(){
+		  
+		 $('#votacion').css('z-index', '1')
+		 $('#galeria').css('z-index', '0')
+		 $('#log').css('z-index', '0')
+		 $('#login').css('z-index', '0')
+		 $('#ubicacion').css('z-index', '0')
+		 $('#retroalimentacion').css('z-index', '0')
+		 $('#monedero').css('z-index', '0')
+		 $('#canje').css('z-index', '0')
+		 $('#mapas').css('z-index', '0')
+		 $('#mapas_grande').css('z-index', '0')
+		 $('#localizador').css('z-index', '0')
+		 $('#codigo').css('z-index', '0')
+		  
 		 $('#abrir_menu').fadeIn()
 		 $('#cerrar_menu').fadeOut()
 		 $('#opciones').animate({marginLeft:'100%'}, 500, 'linear')
@@ -478,11 +804,25 @@ click en "Permitir" para continuar.
 		 $('#mapas').hide()
 		 $('#mapas_grande').hide()
 		 $('#localizador').hide()
-		 $('.titulo_menu').fadeOut(800)
-		 $('#titulo_votacion').stop().delay(500).fadeIn(500)
+		 $('#codigo').hide()
+		 $('#titulo_seccion').html('Votación')
       })
 	  
 	  $('#bt_monedero').click(function(){
+		  
+		 $('#votacion').css('z-index', '0')
+		 $('#galeria').css('z-index', '0')
+		 $('#log').css('z-index', '0')
+		 $('#login').css('z-index', '0')
+		 $('#ubicacion').css('z-index', '0')
+		 $('#retroalimentacion').css('z-index', '0')
+		 $('#monedero').css('z-index', '1')
+		 $('#canje').css('z-index', '0')
+		 $('#mapas').css('z-index', '0')
+		 $('#mapas_grande').css('z-index', '0')
+		 $('#localizador').css('z-index', '0')
+		 $('#codigo').css('z-index', '0')
+		  
 		 $('#abrir_menu').fadeIn()
 		 $('#cerrar_menu').fadeOut()
 		 $('#opciones').animate({marginLeft:'100%'}, 500, 'linear')
@@ -497,11 +837,25 @@ click en "Permitir" para continuar.
 		 $('#mapas').hide()
 		 $('#mapas_grande').hide()
 		 $('#localizador').hide()
-		 $('.titulo_menu').fadeOut(800)
-		 $('#titulo_monedero').stop().delay(500).fadeIn(500)
+		 $('#codigo').hide()
+		 $('#titulo_seccion').html('Monedero Virtual')
       })
 	  
 	  $('#bt_mapas').click(function(){
+		  
+		 $('#votacion').css('z-index', '0')
+		 $('#galeria').css('z-index', '0')
+		 $('#log').css('z-index', '0')
+		 $('#login').css('z-index', '0')
+		 $('#ubicacion').css('z-index', '0')
+		 $('#retroalimentacion').css('z-index', '0')
+		 $('#monedero').css('z-index', '0')
+		 $('#canje').css('z-index', '0')
+		 $('#mapas').css('z-index', '1')
+		 $('#mapas_grande').css('z-index', '0')
+		 $('#localizador').css('z-index', '0')
+		 $('#codigo').css('z-index', '0')
+		  
 		 $('#abrir_menu').fadeIn()
 		 $('#cerrar_menu').fadeOut()
 		 $('#opciones').animate({marginLeft:'100%'}, 500, 'linear')
@@ -516,13 +870,27 @@ click en "Permitir" para continuar.
 		 $('#mapas').hide()
 		 $('#mapas_grande').hide()
 		 $('#localizador').hide()
-		 $('.titulo_menu').fadeOut(800)
-		 $('#titulo_mapa').stop().delay(500).fadeIn(500)
+		 $('#codigo').hide()
+		 $('#titulo_seccion').html('Mapas / Centros C...')
 		 initMap()
       })
 	  
 	  
 	  $('#bt_localizador').click(function(){
+		  
+		  $('#votacion').css('z-index', '0')
+		 $('#galeria').css('z-index', '0')
+		 $('#log').css('z-index', '0')
+		 $('#login').css('z-index', '0')
+		 $('#ubicacion').css('z-index', '0')
+		 $('#retroalimentacion').css('z-index', '0')
+		 $('#monedero').css('z-index', '0')
+		 $('#canje').css('z-index', '0')
+		 $('#mapas').css('z-index', '0')
+		 $('#mapas_grande').css('z-index', '0')
+		 $('#localizador').css('z-index', '1')
+		 $('#codigo').css('z-index', '0')
+		  
 		 $('#abrir_menu').fadeIn()
 		 $('#cerrar_menu').fadeOut()
 		 $('#opciones').animate({marginLeft:'100%'}, 500, 'linear')
@@ -537,9 +905,41 @@ click en "Permitir" para continuar.
 		 $('#mapas').hide()
 		 $('#mapas_grande').hide()
 		 $('#localizador').show()
-		 $('.titulo_menu').fadeOut(800)
-		 $('#titulo_localizador').stop().delay(500).fadeIn(500)
-		 initMap()
+		 $('#codigo').hide()
+		 $('#titulo_seccion').html('Localizador Wifi')
+      })
+	  
+	  $('#bt_codigo').click(function(){
+		  
+		 $('#votacion').css('z-index', '0')
+		 $('#galeria').css('z-index', '0')
+		 $('#log').css('z-index', '0')
+		 $('#login').css('z-index', '0')
+		 $('#ubicacion').css('z-index', '0')
+		 $('#retroalimentacion').css('z-index', '0')
+		 $('#monedero').css('z-index', '0')
+		 $('#canje').css('z-index', '0')
+		 $('#mapas').css('z-index', '0')
+		 $('#mapas_grande').css('z-index', '0')
+		 $('#localizador').css('z-index', '0')
+		 $('#codigo').css('z-index', '1')
+		  
+		 $('#abrir_menu').fadeIn()
+		 $('#cerrar_menu').fadeOut()
+		 $('#opciones').animate({marginLeft:'100%'}, 500, 'linear')
+		 $('#todo').animate({marginLeft:'0%'}, 500, 'linear')
+		 $('#login').hide()
+		 $('#votacion').hide()
+		 $('#galeria').hide()
+		 $('#ubicacion').hide()
+		 $('#retroalimentacion').hide()
+		 $('#monedero').hide()
+		 $('#canje').hide()
+		 $('#mapas').hide()
+		 $('#mapas_grande').hide()
+		 $('#localizador').hide()
+		 $('#codigo').show()
+		 $('#titulo_seccion').html('Código de Cliente')
       })
 	  
       </script>
