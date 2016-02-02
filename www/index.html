@@ -228,6 +228,7 @@ votar 1 vez por campaña
             
         <div id="submit" class="campos" style="left:8%; width:84%; height:8%; top:21%; background:url(imagenes/ubi.png) no-repeat; background-size:auto 60%; background-position:95%">
           <p class="crear" style="left:5%">OBTÉN TU UBICACIÓN</p>
+          <input id="latlng" type="text" value="19.714224,-99.961452"> 
         </div>
         
         <div class="campos" style="left:8%; width:84%; height:8%; top:33%;">
@@ -251,7 +252,9 @@ function initMap() {
 }
 
 function geocodeLatLng(geocoder, map, infowindow) {
-  var myLatLng = {lat: lati, lng: long};
+  var input = document.getElementById('latlng').value;
+  var latlngStr = input.split(',', 2);
+  var latlng = {lat: parseFloat(latlngStr[0]), lng: parseFloat(latlngStr[1])};
 	
   var map = new google.maps.Map(document.getElementById('map'), {
     zoom: 8,
