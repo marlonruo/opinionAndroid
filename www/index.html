@@ -67,6 +67,16 @@ var long
 </head>
 
 <body onLoad="inicio()">
+
+
+			<div class="event listening button" onclick="login();">Login with Facebook</div>
+            <div class="event listening button" onclick="showDialog();">Show Dialog with Facebook</div>
+            <div class="event listening button" onclick="apiTest();">Test API with Facebook</div>
+            <div class="event listening button" onclick="getAccessToken();">Get access token with Facebook</div>
+            <div class="event listening button" onclick="getStatus();">Get login status with Facebook</div>
+            <div class="event listening button" onclick="logout();">Logout with Facebook</div>
+			<div id="fb-root"></div>
+
     <div id="contenedor" style="overflow:hidden">
     
     
@@ -79,17 +89,47 @@ var long
        	<div class="t1" style="width:100%; text-align:center; top:15%">Crear una cuenta para comenzar:</div>
             
         <div class="campos" style="left:8%; width:84%; height:8%; top:20%">
-        	<p class="crear" style="margin-left:5%">Nombre:</p>
-            <input class="campo_texto" type="text">
+        	<p id="t_nombre" class="crear" style="margin-left:5%">Nombre:</p>
+            <input id="c_nombre" class="campo_texto" type="text" onFocus="borrar1()" onBlur="revisar1()">
         </div>
         <div class="campos" style="left:8%; width:84%; height:8%; top:31%">
-        	<p class="crear" style="margin-left:5%">Email:</p>
-            <input class="campo_texto" type="text">
+        	<p id="t_email" class="crear" style="margin-left:5%">Email:</p>
+            <input id="c_email" class="campo_texto" type="text" onFocus="borrar2()" onBlur="revisar2()">
         </div>
         <div class="campos" style="left:8%; width:84%; height:8%; top:42%">
-        	<p class="crear" style="margin-left:5%">Contraseña:</p>
-            <input class="campo_texto" type="text">
+        	<p id="t_contrasena" class="crear" style="margin-left:5%">Contraseña:</p>
+            <input id="c_contrasena" class="campo_texto" type="text" onFocus="borrar3()" onBlur="revisar3()">
         </div>
+        
+        <script>
+        	function borrar1(){
+				$('#t_nombre').html('')
+			}
+			function revisar1(){
+				if(document.getElementById('c_nombre').value==""){
+					$('#t_nombre').html('Nombre:')
+				}
+			}
+			
+			function borrar2(){
+				$('#t_email').html('')
+			}
+			function revisar2(){
+				if(document.getElementById('c_email').value==""){
+					$('#t_email').html('Email:')
+				}
+			}
+			
+			function borrar3(){
+				$('#t_contrasena').html('')
+			}
+			function revisar3(){
+				if(document.getElementById('c_contrasena').value==""){
+					$('#t_contrasena').html('Contraseña:')
+				}
+			}
+			
+        </script>
             
         <div id="bt_signup" class="botones" style="left:8%; width:84%; height:8%; top:53%; background-color:#C7004B; cursor:pointer">
        	  <p class="bot" style="width:100%; text-align:center">Sign Up</p>
@@ -936,10 +976,55 @@ click en "Permitir" para continuar.
 		 $('#titulo_seccion').html('Código de Cliente')
       })
 	  
+	  
+	  
       </script>
     
       <script type="text/javascript" src="cordova.js"></script> 
-      <script type="text/javascript" src="js/index.js"></script> 
+      <script type="text/javascript" src="js/index.js"></script>
+      <script type="text/javascript" src="js/facebookConnectPlugin.js"></script>
+      <script type="text/javascript">
+            var login = function () {
+                if (!window.cordova) {
+                    var appId = prompt("Enter FB Application ID", "");
+                    facebookConnectPlugin.browserInit(appId);
+                }
+                facebookConnectPlugin.login( ["email"], 
+                    function (response) { alert(JSON.stringify(response)) },
+                    function (response) { alert(JSON.stringify(response)) });
+            }
+            
+            var showDialog = function () { 
+                facebookConnectPlugin.showDialog( { method: "feed" }, 
+                    function (response) { alert(JSON.stringify(response)) },
+                    function (response) { alert(JSON.stringify(response)) });
+            }
+            
+            var apiTest = function () { 
+                facebookConnectPlugin.api( "me/?fields=id,email", ["user_birthday"],
+                    function (response) { alert(JSON.stringify(response)) },
+                    function (response) { alert(JSON.stringify(response)) }); 
+            }
+            var getAccessToken = function () { 
+                facebookConnectPlugin.getAccessToken( 
+                    function (response) { alert(JSON.stringify(response)) },
+                    function (response) { alert(JSON.stringify(response)) });
+            }
+            
+            var getStatus = function () { 
+                facebookConnectPlugin.getLoginStatus( 
+                    function (response) { alert(JSON.stringify(response)) },
+                    function (response) { alert(JSON.stringify(response)) });
+            }
+            var logout = function () { 
+                facebookConnectPlugin.logout( 
+                    function (response) { alert(JSON.stringify(response)) },
+                    function (response) { alert(JSON.stringify(response)) });
+            }
+        </script>
+      
+      
+       
       <script>
       app.initialize();
       </script> 
