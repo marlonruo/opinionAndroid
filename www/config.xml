@@ -67,10 +67,6 @@
 	<gap:plugin name="org.apache.cordova.statusbar" />
 	<gap:plugin name="nl.x-services.plugins.socialsharing" />
 	
-	<plugin name="com.phonegap.plugins.facebookconnect" spec="0.9.0" source="pgb">
-    	<param name="APP_ID" value="883376371781966" />
-    	<param name="APP_NAME" value="Opinion" />
-	</gap:plugin>
 
 	<!--<plugin name="me.apla.cordova.app-preferences" spec="0.4.2" source="pgb" />-->
 	<!--<plugin name="br.com.paveisitemas.splashscreen" spec="2.1.1" source="pgb" />-->
