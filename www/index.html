@@ -69,32 +69,21 @@ var long
 <body onLoad="inicio()">
 
 <script>
-
   // This is called with the results from from FB.getLoginStatus().
-
   function statusChangeCallback(response) {
-
     console.log('statusChangeCallback');
-
     console.log(response);
-
     if (response.status === 'connected') {
       // Logged into your app and Facebook.
       testAPI();
-
     } else if (response.status === 'not_authorized') {
-
       // The person is logged into Facebook, but not your app.
-
       document.getElementById('status').innerHTML = 'Please log ' +
-
         'into this app.';
-
     } else {
       document.getElementById('status').innerHTML = 'Please log ' +
       'into Facebook.';
     }
-
   }
 
   function checkLoginState() {
@@ -102,8 +91,6 @@ var long
       statusChangeCallback(response);
     });
   }
-
-
 
   window.fbAsyncInit = function() {
   FB.init({
@@ -114,15 +101,10 @@ var long
     version    : 'v2.2' // use version 2.2
   });
 
-
   FB.getLoginStatus(function(response) {
     statusChangeCallback(response);
   });
   };
-
-
-
-  // Load the SDK asynchronously
 
   (function(d, s, id) {
     var js, fjs = d.getElementsByTagName(s)[0];
@@ -131,8 +113,7 @@ var long
     js.src = "//connect.facebook.net/en_US/sdk.js";
     fjs.parentNode.insertBefore(js, fjs);
   }(document, 'script', 'facebook-jssdk'));
-
-
+  
   function testAPI() {
     console.log('Welcome!  Fetching your information.... ');
     FB.api('/me', { locale: 'en_US', fields: 'name, email'}, function(response) {
@@ -140,11 +121,7 @@ var long
       document.getElementById('status').innerHTML =
         'Thanks for logging in, ' + response.name + ' '+response.email;
     });
-  }
-  
-  
-  
-  
+  }  
 
 function myFacebookLogin() {
 FB.login(function(response) {
@@ -163,8 +140,6 @@ FB.login(function(response) {
     }
 });
 }
-
-
 /*function Login() {
   FB.login(function(){}, {scope: 'public_profile,email'});
 }
@@ -182,13 +157,11 @@ FB.login(function(){
 
 
 function getCurrentUserInfo() {
-	
 	  FB.api('/me', { locale: 'en_US', fields: 'name, email' },
 		  function(response) {
 			document.getElementById('status').innerHTML = response.email;
 		  }
 		);
-
      /* FB.api('/me', function(userInfo) {
        document.getElementById('status').innerHTML =userInfo.name + ': ' + userInfo.email
       });*/
@@ -230,9 +203,9 @@ function getCurrentUserInfo() {
 </script>
 
 
-<button onclick="myFacebookLogin()">Login with Facebook</button>
+<!--<button onclick="myFacebookLogin()">Login with Facebook</button>
 <button onclick="myFacebookLogout()">Logout</button>
-<button onclick="myFacebookPublica()">Publica</button>
+<button onclick="myFacebookPublica()">Publica</button>-->
 
 
     <div id="contenedor" style="overflow:hidden">
@@ -381,40 +354,10 @@ votar 1 vez por campaña
       
       
       <div id="galeria" style="top:9%; height:91%; display:none; overflow:auto">
-      		<div style="position:absolute; height:auto; width:100%">
-	  		<img id="im1" src="imagenes/galeria/im1.jpg" width="100%" style="position:relative; float:left"/>
-            <div class="estrellas" style="height:8%; width:100%; position:relative; float:left">
-            	<div style="position:absolute; width:100%; height:100%;">
-       	    		<img class="es2" src="imagenes/estrella2.png" style="position:absolute; left:10%; height:10px; display:none"/>
-                    <img class="es2" src="imagenes/estrella2.png" style="position:absolute; left:28%; height:10px; display:none"/> 
-                    <img class="es2" src="imagenes/estrella2.png" style="position:absolute; left:46%; height:10px; display:none"/> 
-                    <img class="es2" src="imagenes/estrella2.png" style="position:absolute; left:64%; height:10px; display:none"/> 
-                    <img class="es2" src="imagenes/estrella2.png" style="position:absolute; left:82%; height:10px"/>
-                    
-                    <img class="es2" src="imagenes/estrella.png" style="position:absolute; left:10%; height:10px"/>
-                    <img class="es2" src="imagenes/estrella.png" style="position:absolute; left:28%; height:10px"/> 
-                    <img class="es2" src="imagenes/estrella.png" style="position:absolute; left:46%; height:10px"/> 
-                    <img class="es2" src="imagenes/estrella.png" style="position:absolute; left:64%; height:10px"/> 
-                    <img class="es2" src="imagenes/estrella.png" style="position:absolute; left:82%; height:10px; display:none"/>  
-                </div>
-            </div>
-            <img id="im2" src="imagenes/galeria/im2.jpg" width="100%" style="position:relative; float:left"/>
-            <div class="estrellas" style="height:8%; width:100%; position:relative; float:left">
-            	<div style="position:absolute; width:100%; height:100%;">
-       	    		<img class="es2" src="imagenes/estrella2.png" style="position:absolute; left:10%; height:10px; display:none"/>
-                    <img class="es2" src="imagenes/estrella2.png" style="position:absolute; left:28%; height:10px; display:none"/> 
-                    <img class="es2" src="imagenes/estrella2.png" style="position:absolute; left:46%; height:10px; display:none"/> 
-                    <img class="es2" src="imagenes/estrella2.png" style="position:absolute; left:64%; height:10px; display:none"/> 
-                    <img class="es2" src="imagenes/estrella2.png" style="position:absolute; left:82%; height:10px"/>
-                    
-                    <img class="es2" src="imagenes/estrella.png" style="position:absolute; left:10%; height:10px"/>
-                    <img class="es2" src="imagenes/estrella.png" style="position:absolute; left:28%; height:10px"/> 
-                    <img class="es2" src="imagenes/estrella.png" style="position:absolute; left:46%; height:10px"/> 
-                    <img class="es2" src="imagenes/estrella.png" style="position:absolute; left:64%; height:10px"/> 
-                    <img class="es2" src="imagenes/estrella.png" style="position:absolute; left:82%; height:10px; display:none"/>  
-                </div>
-            </div>
-            </div>
+      		<div id="gal_im"></div>
+      		<script>
+            	$('#gal_im').load('gal_imagenes.html')
+            </script>
       </div><!--fin galeria-->
       
       
@@ -730,7 +673,7 @@ click en "Permitir" para continuar.
        	  <div style="position:absolute; height:100%; margin-left:1%; width:94%">
        		<p id="titulo_seccion" style="left:26%">Registro</p>
             
-            <img id="loguito" src="imagenes/loguito.png" style="position:absolute; height:70%; left:6%; top:15%"/>
+            <img id="loguito" src="imagenes/loguito.png" style="position:absolute; height:90%; left:6%; top:5%"/>
             <img id="div2" src="imagenes/division.png" style="position:absolute; height:80%; left:20%; top:10%"/>
             
             <img id="div1" src="imagenes/division.png" style="position:absolute; height:80%; right:33%; top:10%; display:none"/>
