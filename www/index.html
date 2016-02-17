@@ -492,7 +492,7 @@ function geocodeLatLng(geocoder, map, infowindow) {
         </div>
         
         <script>
-        $('#bt_canjear').on( "vclick", function() {
+        $('#bt_canjear').click(function(){
 			$('#alta').fadeOut(200)
 			$('#movimientos').fadeOut(200)
 			$('#canjear').delay(200).fadeIn(500)
@@ -500,7 +500,7 @@ function geocodeLatLng(geocoder, map, infowindow) {
 			$('#bt_alta').animate({top:'88%'}, 500)
 		})
 		
-		$('#bt_movimientos').on( "vclick", function() {
+		$('#bt_movimientos').click(function(){
 			$('#alta').fadeOut(200)
 			$('#canjear').fadeOut(200)
 			$('#movimientos').delay(200).fadeIn(500)
@@ -508,7 +508,7 @@ function geocodeLatLng(geocoder, map, infowindow) {
 			$('#bt_alta').animate({top:'88%'}, 500)
 		})
 		
-		$('#bt_alta').on( "vclick", function() {
+		$('#bt_alta').click(function(){
 			$('#movimientos').fadeOut(200)
 			$('#canjear').fadeOut(200)
 			$('#alta').delay(200).fadeIn(500)
@@ -715,7 +715,7 @@ click en "Permitir" para continuar.
 	  
 	  var at=0
 	  var reg
-	  $('#bt_signup').on( "vclick", function() {
+	  $('#bt_signup').click(function(){
 		 $('#votacion').css('z-index', '1')
 		 $('#log').css('z-index', '0')
 		 $('#login').css('z-index', '0')
@@ -727,7 +727,7 @@ click en "Permitir" para continuar.
 		 $('#titulo_seccion').html('Votacion')
       })
 	  
-	  $('#bt_log').on( "vclick", function() {
+	  $('#bt_log').click(function(){
 		 $('#log').show()
 		 $('#log').css('z-index', '1')
 		 $('#login').css('z-index', '0')
@@ -739,7 +739,7 @@ click en "Permitir" para continuar.
 		 at=1
       })
 	  
-	  $('#atras').on( "vclick", function() {
+	  $('#atras').click(function(){
 		  if(at==1){
 			 $('#login').show()
 			 $('#login').css('z-index', '1')
@@ -790,7 +790,7 @@ click en "Permitir" para continuar.
       })
 	  
 	  
-	  $('#bt_imagenes').on( "vclick", function() {
+	  $('#bt_imagenes').click(function(){
 		// $('#gal_im').load('gal_imagenes.php')
 		  $( "#gal_im" ).load( "gal_imagenes.php", function() {
 			  inicio()
@@ -816,7 +816,7 @@ click en "Permitir" para continuar.
 
 	  
 	  
-	  $('#bt_videos').on( "vclick", function() {
+	  $('#bt_videos').click(function(){
 		   $( "#gal_im" ).load( "gal_videos.php", function() {
 			  inicio()
 		  });
@@ -890,7 +890,7 @@ click en "Permitir" para continuar.
       })
 	  
 	  
-	  $('#abrir_menu').on( "vclick", function() {
+	  $('#abrir_menu').click(function(){
 		 $('#abrir_menu').fadeOut()
 		 $('#cerrar_menu').fadeIn()
 		 $('#opciones').show()
@@ -900,7 +900,7 @@ click en "Permitir" para continuar.
 		 $('#titulo_seccion').html('Menu')
       })
 	  
-	  $('#cerrar_menu').on( "vclick", function() {
+	  $('#cerrar_menu').click(function(){
 		 $('#abrir_menu').fadeIn()
 		 $('#cerrar_menu').fadeOut()
 		 $('#opciones').animate({marginLeft:'100%'}, 500, 'linear')
@@ -912,7 +912,7 @@ click en "Permitir" para continuar.
 	  
 	  
 	  
-	  $('#can1, #can2, #can3, #can4').on( "vclick", function() {
+	  $('#can1, #can2, #can3, #can4').click(function(){
 		 $('#atras').fadeIn()
 		 $('#alerta').fadeOut()
 		 $('#atras').css('right','20%')
@@ -930,7 +930,7 @@ click en "Permitir" para continuar.
 	  
 	  
 	  
-	  $('#bt_votacion').on( "vclick", function() {
+	  $('#bt_votacion').click(function(){
 		  
 		 $('#votacion').css('z-index', '1')
 		 $('#galeria').css('z-index', '0')
@@ -963,7 +963,7 @@ click en "Permitir" para continuar.
 		 $('#titulo_seccion').html('Votación')
       })
 	  
-	  $('#bt_monedero').on( "vclick", function() {
+	  $('#bt_monedero').click(function(){
 		  
 		 $('#votacion').css('z-index', '0')
 		 $('#galeria').css('z-index', '0')
@@ -996,7 +996,7 @@ click en "Permitir" para continuar.
 		 $('#titulo_seccion').html('Monedero Virtual')
       })
 	  
-	  $('#bt_mapas').on( "vclick", function() {
+	  $('#bt_mapas').click(function(){
 		  
 		 $('#votacion').css('z-index', '0')
 		 $('#galeria').css('z-index', '0')
@@ -1031,7 +1031,7 @@ click en "Permitir" para continuar.
       })
 	  
 	  
-	  $('#bt_localizador').on( "vclick", function() {
+	  $('#bt_localizador').click(function(){
 		  
 		  $('#votacion').css('z-index', '0')
 		 $('#galeria').css('z-index', '0')
@@ -1064,7 +1064,7 @@ click en "Permitir" para continuar.
 		 $('#titulo_seccion').html('Localizador Wifi')
       })
 	  
-	  $('#bt_codigo').on( "vclick", function() {
+	  $('#bt_codigo').click(function(){
 		  
 		 $('#votacion').css('z-index', '0')
 		 $('#galeria').css('z-index', '0')
