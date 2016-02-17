@@ -38,6 +38,7 @@
 <link href="css/estilos.css" rel="stylesheet" type="text/css">
 
 <script src="js/jquery-1.11.2.js" type="text/javascript"></script>
+<script src="js/jquery.mobile.custom.js" type="text/javascript"></script>
 <script src="js/jquery-ui.js"></script>
 <script src="js/ui.touch.punch.js"></script>
 <script src="js/move.js"></script>
@@ -354,7 +355,9 @@ votar 1 vez por campaña
       
       
       <div id="galeria" style="top:9%; height:91%; display:none; overflow:auto">
-      		<div id="gal_im"></div>
+      		<div id="gal_im">
+            
+            </div>
       		<script>
             	$('#gal_im').load('gal_imagenes.php')
             </script>
@@ -489,7 +492,7 @@ function geocodeLatLng(geocoder, map, infowindow) {
         </div>
         
         <script>
-        $('#bt_canjear').click(function(){
+        $('#bt_canjear').on( "tap", function() {
 			$('#alta').fadeOut(200)
 			$('#movimientos').fadeOut(200)
 			$('#canjear').delay(200).fadeIn(500)
@@ -497,7 +500,7 @@ function geocodeLatLng(geocoder, map, infowindow) {
 			$('#bt_alta').animate({top:'88%'}, 500)
 		})
 		
-		$('#bt_movimientos').click(function(){
+		$('#bt_movimientos').on( "tap", function() {
 			$('#alta').fadeOut(200)
 			$('#canjear').fadeOut(200)
 			$('#movimientos').delay(200).fadeIn(500)
@@ -505,7 +508,7 @@ function geocodeLatLng(geocoder, map, infowindow) {
 			$('#bt_alta').animate({top:'88%'}, 500)
 		})
 		
-		$('#bt_alta').click(function(){
+		$('#bt_alta').on( "tap", function() {
 			$('#movimientos').fadeOut(200)
 			$('#canjear').fadeOut(200)
 			$('#alta').delay(200).fadeIn(500)
@@ -712,7 +715,7 @@ click en "Permitir" para continuar.
 	  
 	  var at=0
 	  var reg
-	  $('#bt_signup').click(function(){
+	  $('#bt_signup').on( "tap", function() {
 		 $('#votacion').css('z-index', '1')
 		 $('#log').css('z-index', '0')
 		 $('#login').css('z-index', '0')
@@ -724,7 +727,7 @@ click en "Permitir" para continuar.
 		 $('#titulo_seccion').html('Votacion')
       })
 	  
-	  $('#bt_log').click(function(){
+	  $('#bt_log').on( "tap", function() {
 		 $('#log').show()
 		 $('#log').css('z-index', '1')
 		 $('#login').css('z-index', '0')
@@ -736,7 +739,7 @@ click en "Permitir" para continuar.
 		 at=1
       })
 	  
-	  $('#atras').click(function(){
+	  $('#atras').on( "tap", function() {
 		  if(at==1){
 			 $('#login').show()
 			 $('#login').css('z-index', '1')
@@ -787,7 +790,13 @@ click en "Permitir" para continuar.
       })
 	  
 	  
-	  $('#bt_imagenes, #bt_videos, #bt_textos, #bt_cuestionarios, #bt_check').click(function(){
+	  $('#bt_imagenes').on( "tap", function() {
+		// $('#gal_im').load('gal_imagenes.php')
+		  $( "#gal_im" ).load( "gal_imagenes.php", function() {
+			  inicio()
+		  });
+		 
+		 
 		 $('#galeria').css('z-index', '2')
 		 $('#votacion').css('z-index', '1')
 		 $('#retroalimentacion').css('z-index', '0')
@@ -804,54 +813,84 @@ click en "Permitir" para continuar.
 		 at=2
       })
 	  
-	  $('.bt_imagenes').mousedown(function(){
-		 $('.bt_imagenes').css('background-color', '#C7004B')
-      })
-	   $('.bt_imagenes').mouseup(function(){
-		 $('.bt_imagenes').css('background', 'none')
-		 $('#titulo_seccion').html('Imagenes')
-		 reg="imagenes"
+
+	  
+	  
+	  $('#bt_videos').on( "tap", function() {
+		   $( "#gal_im" ).load( "gal_videos.php", function() {
+			  inicio()
+		  });
+		  
+		 $('#galeria').css('z-index', '2')
+		 $('#votacion').css('z-index', '1')
+		 $('#retroalimentacion').css('z-index', '0')
+		 $('#log').css('z-index', '0')
+		 $('#login').css('z-index', '0')
+		 
+		 $('#atras').fadeIn()
+		 $('#alerta').fadeOut()
+		 $('#atras').css('right','20%')
+		 
+		 $('#galeria').show()
+		 $('#galeria').css('margin-left', '100%')
+		 $('#galeria').animate({marginLeft:'0%'}, 500)
+		 at=2
       })
 	  
-	  $('.bt_videos').mousedown(function(){
+	  
+	 
+      $('.bt_imagenes').on( "vmousedown", function() {
+		  $('.bt_imagenes').css('background-color', '#C7004B')
+	  });
+	  
+	  $('.bt_imagenes').on( "vmouseup", function() {
+		  $('.bt_imagenes').css('background', 'none')
+		 $('#titulo_seccion').html('Imagenes')
+		 reg="imagenes"
+	  });
+	  
+	  
+
+	  
+	  $('.bt_videos').on( "vmousedown", function() {
 		 $('.bt_videos').css('background-color', '#C7004B')
       })
-	   $('.bt_videos').mouseup(function(){
+	   $('.bt_videos').on( "vmouseup", function() {
 		 $('.bt_videos').css('background', 'none')
 		 $('#titulo_seccion').html('Videos')
 		 reg="videos"
       })
 	  
 	  
-	  $('.bt_textos').mousedown(function(){
+	  $('.bt_textos').on( "vmousedown", function() {
 		 $('.bt_textos').css('background-color', '#C7004B')
       })
-	   $('.bt_textos').mouseup(function(){
+	   $('.bt_textos').on( "vmouseup", function() {
 		 $('.bt_textos').css('background', 'none')
 		 $('#titulo_seccion').html('Textos')
 		 reg="textos"
       })
 	  
-	  $('.bt_cuestionarios').mousedown(function(){
+	  $('.bt_cuestionarios').on( "vmousedown", function() {
 		 $('.bt_cuestionarios').css('background-color', '#C7004B')
       })
-	   $('.bt_cuestionarios').mouseup(function(){
+	   $('.bt_cuestionarios').on( "vmouseup", function() {
 		 $('.bt_cuestionarios').css('background', 'none')
 		 $('#titulo_seccion').html('Cuestionarios')
 		 reg="cuestionarios"
       })
 	  
-	  $('.bt_check').mousedown(function(){
+	  $('.bt_check').on( "vmousedown", function() {
 		 $('.bt_check').css('background-color', '#C7004B')
       })
-	   $('.bt_check').mouseup(function(){
+	   $('.bt_check').on( "vmouseup", function() {
 		 $('.bt_check').css('background', 'none')
 		 $('#titulo_seccion').html('Check')
 		 reg="check"
       })
 	  
 	  
-	  $('#abrir_menu').click(function(){
+	  $('#abrir_menu').on( "tap", function() {
 		 $('#abrir_menu').fadeOut()
 		 $('#cerrar_menu').fadeIn()
 		 $('#opciones').show()
@@ -861,7 +900,7 @@ click en "Permitir" para continuar.
 		 $('#titulo_seccion').html('Menu')
       })
 	  
-	  $('#cerrar_menu').click(function(){
+	  $('#cerrar_menu').on( "tap", function() {
 		 $('#abrir_menu').fadeIn()
 		 $('#cerrar_menu').fadeOut()
 		 $('#opciones').animate({marginLeft:'100%'}, 500, 'linear')
@@ -870,29 +909,10 @@ click en "Permitir" para continuar.
       })
 	  
 	  
-	  $('#im1, #im2').click(function(){
-		 $('#votacion').css('z-index', '0')
-		 $('#galeria').css('z-index', '0')
-		 $('#log').css('z-index', '0')
-		 $('#login').css('z-index', '0')
-		 $('#ubicacion').css('z-index', '0')
-		 $('#retroalimentacion').css('z-index', '1')
-		 $('#monedero').css('z-index', '0')
-		 $('#canje').css('z-index', '0')
-		 $('#mapas').css('z-index', '0')
-		 $('#mapas_grande').css('z-index', '0')
-		 $('#localizador').css('z-index', '0')
-		 $('#codigo').css('z-index', '0')
-		  
-		 $('#retroalimentacion').show()
-		 $('#retroalimentacion').css('margin-left', '100%')
-		 $('#retroalimentacion').animate({marginLeft:'0%'}, 500)
-		 $('#titulo_seccion').html('Retroalimentacion')
-		 at=3
-      })
 	  
 	  
-	  $('#can1, #can2, #can3, #can4').click(function(){
+	  
+	  $('#can1, #can2, #can3, #can4').on( "tap", function() {
 		 $('#atras').fadeIn()
 		 $('#alerta').fadeOut()
 		 $('#atras').css('right','20%')
@@ -910,7 +930,7 @@ click en "Permitir" para continuar.
 	  
 	  
 	  
-	  $('#bt_votacion').click(function(){
+	  $('#bt_votacion').on( "tap", function() {
 		  
 		 $('#votacion').css('z-index', '1')
 		 $('#galeria').css('z-index', '0')
@@ -943,7 +963,7 @@ click en "Permitir" para continuar.
 		 $('#titulo_seccion').html('Votación')
       })
 	  
-	  $('#bt_monedero').click(function(){
+	  $('#bt_monedero').on( "tap", function() {
 		  
 		 $('#votacion').css('z-index', '0')
 		 $('#galeria').css('z-index', '0')
@@ -976,7 +996,7 @@ click en "Permitir" para continuar.
 		 $('#titulo_seccion').html('Monedero Virtual')
       })
 	  
-	  $('#bt_mapas').click(function(){
+	  $('#bt_mapas').on( "tap", function() {
 		  
 		 $('#votacion').css('z-index', '0')
 		 $('#galeria').css('z-index', '0')
@@ -1011,7 +1031,7 @@ click en "Permitir" para continuar.
       })
 	  
 	  
-	  $('#bt_localizador').click(function(){
+	  $('#bt_localizador').on( "tap", function() {
 		  
 		  $('#votacion').css('z-index', '0')
 		 $('#galeria').css('z-index', '0')
@@ -1044,7 +1064,7 @@ click en "Permitir" para continuar.
 		 $('#titulo_seccion').html('Localizador Wifi')
       })
 	  
-	  $('#bt_codigo').click(function(){
+	  $('#bt_codigo').on( "tap", function() {
 		  
 		 $('#votacion').css('z-index', '0')
 		 $('#galeria').css('z-index', '0')

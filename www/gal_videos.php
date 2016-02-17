@@ -1,7 +1,29 @@
 
-      		<div style="position:absolute; height:auto; width:100%">
-	  		<img id="im1" src="imagenes/galeria/im1.jpg" width="100%" style="position:relative; float:left"/>
-            <div class="estrellas" style="height:20%; width:100%; position:relative; float:left">
+<style>			
+.container {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%;
+}
+.video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+</style>
+            
+            
+            <div style="position:absolute; height:auto; width:100%">
+	  		
+            <div class="container">
+				<iframe src="//www.youtube.com/embed/JCDjsTSWmoo" 
+frameborder="0" allowfullscreen class="video"></iframe>
+			</div>
+            
+            <div class="estrellas" style="height:8%; width:100%; position:relative; float:left">
             	<div style="position:absolute; width:100%; height:100%;">
        	    		<img id="ee1a" class="es2" src="imagenes/estrella2.png" style="position:absolute; left:10%; height:10px; opacity:0; cursor:pointer"/>
                     <img id="ee2a" class="es2" src="imagenes/estrella2.png" style="position:absolute; left:28%; height:10px; opacity:0; cursor:pointer"/> 
@@ -18,18 +40,6 @@
                 
                 <script>
                 	$('#ee1').mouseover(function(){
-						$('#ee1').css('opacity', '1')
-						$('#ee2').css('opacity', '0')
-						$('#ee3').css('opacity', '0')
-						$('#ee4').css('opacity', '0')
-						$('#ee5').css('opacity', '0')
-						$('#ee1a').css('opacity', '0')
-						$('#ee2a').css('opacity', '1')
-						$('#ee3a').css('opacity', '1')
-						$('#ee4a').css('opacity', '1')
-						$('#ee5a').css('opacity', '1')
-					})
-					$('#ee1').mouseover(function(){
 						$('#ee1').css('opacity', '1')
 						$('#ee2').css('opacity', '0')
 						$('#ee3').css('opacity', '0')
@@ -89,45 +99,8 @@
 						$('#ee4a').css('opacity', '0')
 						$('#ee5a').css('opacity', '0')
 					})
-					
-	  $('#im1').click(function(){
-		 $('#votacion').css('z-index', '0')
-		 $('#galeria').css('z-index', '0')
-		 $('#log').css('z-index', '0')
-		 $('#login').css('z-index', '0')
-		 $('#ubicacion').css('z-index', '0')
-		 $('#retroalimentacion').css('z-index', '1')
-		 $('#monedero').css('z-index', '0')
-		 $('#canje').css('z-index', '0')
-		 $('#mapas').css('z-index', '0')
-		 $('#mapas_grande').css('z-index', '0')
-		 $('#localizador').css('z-index', '0')
-		 $('#codigo').css('z-index', '0')
-		  
-		 $('#retroalimentacion').show()
-		 $('#retroalimentacion').css('margin-left', '100%')
-		 $('#retroalimentacion').animate({marginLeft:'0%'}, 500)
-		 $('#titulo_seccion').html('Retroalimentacion')
-		 at=3
-      })
-					
                 </script>
             </div>
-            <img id="im2" src="imagenes/galeria/im2.jpg" width="100%" style="position:relative; float:left"/>
-            <div class="estrellas" style="height:8%; width:100%; position:relative; float:left">
-            	<div style="position:absolute; width:100%; height:100%;">
-       	    		<img class="es2" src="imagenes/estrella2.png" style="position:absolute; left:10%; height:10px; display:none"/>
-                    <img class="es2" src="imagenes/estrella2.png" style="position:absolute; left:28%; height:10px; display:none"/> 
-                    <img class="es2" src="imagenes/estrella2.png" style="position:absolute; left:46%; height:10px; display:none"/> 
-                    <img class="es2" src="imagenes/estrella2.png" style="position:absolute; left:64%; height:10px; display:none"/> 
-                    <img class="es2" src="imagenes/estrella2.png" style="position:absolute; left:82%; height:10px"/>
-                    
-                    <img class="es2" src="imagenes/estrella.png" style="position:absolute; left:10%; height:10px"/>
-                    <img class="es2" src="imagenes/estrella.png" style="position:absolute; left:28%; height:10px"/> 
-                    <img class="es2" src="imagenes/estrella.png" style="position:absolute; left:46%; height:10px"/> 
-                    <img class="es2" src="imagenes/estrella.png" style="position:absolute; left:64%; height:10px"/> 
-                    <img class="es2" src="imagenes/estrella.png" style="position:absolute; left:82%; height:10px; display:none"/>  
-                </div>
-            </div>
+            
             </div>
 
