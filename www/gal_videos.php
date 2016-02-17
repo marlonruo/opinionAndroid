@@ -19,7 +19,7 @@
             <div style="position:absolute; height:auto; width:100%">
 	  		
             <div class="container">
-				<iframe src="//www.youtube.com/embed/JCDjsTSWmoo" 
+				<iframe src="http://www.youtube.com/embed/JCDjsTSWmoo" 
 frameborder="0" allowfullscreen class="video"></iframe>
 			</div>
             
