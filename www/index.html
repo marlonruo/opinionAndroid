@@ -454,20 +454,6 @@ function initMap() {
   });
   
   var geocoder2 = new google.maps.Geocoder;
-  function geocodeAddress(geocoder2, resultsMap) {
-        var address = document.getElementById('address').value;
-        geocoder2.geocode({'address': address}, function(results, status) {
-          if (status === google.maps.GeocoderStatus.OK) {
-            resultsMap.setCenter(results[0].geometry.location);
-            var marker = new google.maps.Marker({
-              map: resultsMap,
-              position: results[0].geometry.location
-            });
-          } else {
-            alert('No hay resultados');
-          }
-        });
-      }
   
   
   document.getElementById('buscar').addEventListener('click', function() {
@@ -502,7 +488,7 @@ function initMap() {
 
 
 
-  function geocodeLatLng(geocoder, map, infowindow) {
+function geocodeLatLng(geocoder, map, infowindow) {
   var input = document.getElementById('latlng').value;
   var latlngStr = input.split(',', 2);
   var myLatLng = {lat: parseFloat(latlngStr[0]), lng: parseFloat(latlngStr[1])};
@@ -528,8 +514,22 @@ function initMap() {
     map: map,
     //title: 'Hello World!'
   });
-  
-  
+}
+
+
+ function geocodeAddress(geocoder2, resultsMap) {
+        var address = document.getElementById('address').value;
+        geocoder2.geocode({'address': address}, function(results, status) {
+          if (status === google.maps.GeocoderStatus.OK) {
+            resultsMap.setCenter(results[0].geometry.location);
+            var marker = new google.maps.Marker({
+              map: resultsMap,
+              position: results[0].geometry.location
+            });
+          } else {
+            alert('No hay resultados');
+          }
+        });
 }
 
     </script>
