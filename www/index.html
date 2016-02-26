@@ -455,10 +455,10 @@ function initMap() {
           mapa_centro()
   });
   
-  
-  function geocodeAddress(geocoder, resultsMap) {
+  var geocoder2 = new google.maps.Geocoder;
+  function geocodeAddress(geocoder2, resultsMap) {
         var address = document.getElementById('address').value;
-        geocoder.geocode({'address': address}, function(results, status) {
+        geocoder2.geocode({'address': address}, function(results, status) {
           if (status === google.maps.GeocoderStatus.OK) {
             resultsMap.setCenter(results[0].geometry.location);
             var marker = new google.maps.Marker({
@@ -497,7 +497,10 @@ function initMap() {
   
 }
 
-function geocodeLatLng(geocoder, map, infowindow) {
+
+
+
+  function geocodeLatLng(geocoder, map, infowindow) {
   var input = document.getElementById('latlng').value;
   var latlngStr = input.split(',', 2);
   var myLatLng = {lat: parseFloat(latlngStr[0]), lng: parseFloat(latlngStr[1])};

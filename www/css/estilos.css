@@ -59,6 +59,14 @@ body {
 	border: 2px solid #fff;
 	cursor:pointer
 }
+
+.campos2{
+	font-family: ArialN;
+	position: absolute;
+	color: #fff;
+	cursor:pointer
+}
+
 .gris {
 	font-family: ArialN;
 	position: absolute;
