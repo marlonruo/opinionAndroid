@@ -1,7 +1,7 @@
 
-      		<div style="position:absolute; height:auto; width:100%">
-	  		<img id="im1" src="imagenes/galeria/im1.jpg" width="100%" style="position:relative; float:left"/>
-            <div class="estrellas" style="height:20%; width:100%; position:relative; float:left">
+      		<div style="position:absolute; height:100%; width:100%; overflow:hidden">
+	  		<img id="im1" src="imagenes/galeria/fuze.png" width="100%" style="position:relative; float:left"/>
+            <div class="estrellas" style="height:20%; width:100%; position:fixed; bottom:0px; background-color:#FFFFFF">
             	<div style="position:absolute; width:100%; height:100%;">
        	    		<img id="ee1a" class="es2" src="imagenes/estrella2.png" style="position:absolute; left:10%; height:10px; opacity:0; cursor:pointer"/>
                     <img id="ee2a" class="es2" src="imagenes/estrella2.png" style="position:absolute; left:28%; height:10px; opacity:0; cursor:pointer"/> 
@@ -113,21 +113,6 @@
 					
                 </script>
             </div>
-            <img id="im2" src="imagenes/galeria/im2.jpg" width="100%" style="position:relative; float:left"/>
-            <div class="estrellas" style="height:8%; width:100%; position:relative; float:left">
-            	<div style="position:absolute; width:100%; height:100%;">
-       	    		<img class="es2" src="imagenes/estrella2.png" style="position:absolute; left:10%; height:10px; display:none"/>
-                    <img class="es2" src="imagenes/estrella2.png" style="position:absolute; left:28%; height:10px; display:none"/> 
-                    <img class="es2" src="imagenes/estrella2.png" style="position:absolute; left:46%; height:10px; display:none"/> 
-                    <img class="es2" src="imagenes/estrella2.png" style="position:absolute; left:64%; height:10px; display:none"/> 
-                    <img class="es2" src="imagenes/estrella2.png" style="position:absolute; left:82%; height:10px"/>
-                    
-                    <img class="es2" src="imagenes/estrella.png" style="position:absolute; left:10%; height:10px"/>
-                    <img class="es2" src="imagenes/estrella.png" style="position:absolute; left:28%; height:10px"/> 
-                    <img class="es2" src="imagenes/estrella.png" style="position:absolute; left:46%; height:10px"/> 
-                    <img class="es2" src="imagenes/estrella.png" style="position:absolute; left:64%; height:10px"/> 
-                    <img class="es2" src="imagenes/estrella.png" style="position:absolute; left:82%; height:10px; display:none"/>  
-                </div>
-            </div>
+
             </div>
 

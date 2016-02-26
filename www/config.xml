@@ -66,6 +66,7 @@
     <gap:plugin name="org.apache.cordova.splashscreen" />
 	<gap:plugin name="org.apache.cordova.statusbar" />
 	<gap:plugin name="nl.x-services.plugins.socialsharing" />
+	<gap:plugin name="de.appplant.cordova.plugin.hidden-statusbar-overlay" />
 	
 
 	<!--<plugin name="me.apla.cordova.app-preferences" spec="0.4.2" source="pgb" />-->

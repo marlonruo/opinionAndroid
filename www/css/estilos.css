@@ -91,19 +91,22 @@ body {
 	width: 100%;
 	height: 100%;
 	position: absolute;
-	background-color: #475CA9;
+	background:url(../imagenes/azul.png) no-repeat;
+	background-size:100% 100%;
 }
 #log {
 	width: 100%;
 	height: 100%;
 	position: absolute;
-	background-color: #475CA9;
+	background:url(../imagenes/azul.png) no-repeat;
+	background-size:100% 100%;
 }
 #votacion {
 	width: 100%;
 	height: 100%;
 	position: absolute;
-	background-color: #7457C0;
+	background:url(../imagenes/morado.png) no-repeat;
+	background-size:100% 100%;
 }
 #galeria {
 	width: 100%;
@@ -115,7 +118,8 @@ body {
 	width: 100%;
 	height: 100%;
 	position: absolute;
-	background-color: #7457C0;
+	background:url(../imagenes/morado.png) no-repeat;
+	background-size:100% 100%;
 }
 
 #retroalimentacion {
@@ -128,37 +132,43 @@ body {
 	width: 100%;
 	height: 100%;
 	position: absolute;
-	background-color: #C7004B;
+	background:url(../imagenes/rosa.png) no-repeat;
+	background-size:100% 100%;
 }
 #canje {
 	width: 100%;
 	height: 100%;
 	position: absolute;
-	background-color: #7457C0;
+	background:url(../imagenes/morado.png) no-repeat;
+	background-size:100% 100%;
 }
 #mapas {
 	width: 100%;
 	height: 100%;
 	position: absolute;
-	background-color: #75C474;
+	background:url(../imagenes/verde.png) no-repeat;
+	background-size:100% 100%;
 }
 #mapas_grande{
 	width: 100%;
 	height: 100%;
 	position: absolute;
-	background-color: #75C474;
+	background:url(../imagenes/verde.png) no-repeat;
+	background-size:100% 100%;
 }
 #localizador{
 	width: 100%;
 	height: 100%;
 	position: absolute;
-	background-color: #475CA9;
+	background:url(../imagenes/azul.png) no-repeat;
+	background-size:100% 100%;
 }
 #codigo{
 	width: 100%;
 	height: 100%;
 	position: absolute;
-	background-color: #FBB040;
+	background:url(../imagenes/amarillo.png) no-repeat;
+	background-size:100% 100%;
 }
 
 
@@ -229,6 +239,14 @@ p {
 }
 
 #centro {
+	border-radius: 5px 5px 5px 5px;
+	-moz-border-radius: 5px 5px 5px 5px;
+	-webkit-border-radius: 5px 5px 5px 5px;
+	border: 2px solid #fff;
+}
+
+
+#buscar {
 	border-radius: 5px 5px 5px 5px;
 	-moz-border-radius: 5px 5px 5px 5px;
 	-webkit-border-radius: 5px 5px 5px 5px;
