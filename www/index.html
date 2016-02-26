@@ -438,9 +438,7 @@ function initMap() {
   var infowindow = new google.maps.InfoWindow;
   
 
-  document.getElementById('buscar').addEventListener('click', function() {
-       geocodeAddress(geocoder, map);
-  });
+  
   
   
   var image = 'imagenes/wi-fi.png';
@@ -471,6 +469,10 @@ function initMap() {
         });
       }
   
+  
+  document.getElementById('buscar').addEventListener('click', function() {
+       geocodeAddress(geocoder2, map);
+  });
 
   document.getElementById('submit').addEventListener('click', function() {
     geocodeLatLng(geocoder, map, infowindow);
