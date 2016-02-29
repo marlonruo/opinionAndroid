@@ -468,7 +468,7 @@ function initMap() {
   });
   
   document.getElementById('map_obten').addEventListener('click', function() {
-    geocodeLatLng(geocoder, map);
+    geocodeLocation(geocoder, map);
 	$('#mapas').css('z-index', '1')
     $('#ubicacion').css('z-index', '2')
 			 //$('#retroalimentacion').css('z-index', '0')
@@ -760,7 +760,7 @@ click en "Permitir" para continuar.
       <div id="mapas_grande" style="display:none; overflow:hidden">
       
       		<div id="contenido" style="position:absolute; width:1200px; height:600px; left:50%; margin-left:-600px; top:50%; margin-top:-300px;">
-				<img id="mapota" src="imagenes/mapota.png" style="height:850px"/> 
+				<img id="mapota" src="imagenes/mapota.png" style="height:900px"/> 
 			</div>
       
 <!--      
