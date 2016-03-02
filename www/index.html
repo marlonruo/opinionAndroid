@@ -281,30 +281,47 @@ function getCurrentUserInfo() {
             
             <div id="bt_log" class="t1" style="width:100%; text-align:center; top:90%; cursor:pointer">¿Ya tienes una cuenta? Log in <img src="imagenes/flecha.png" height="8px"/></div>
             
+            
+            
+       		<div id="ale" style="position:absolute; width:84%; left:8%; top:45%; height:12%; display:none">
+            	<div style="position:absolute; background-color:#C7004B; width:100%; height:38%">
+       	    		<img id="cierra" src="imagenes/cierra.png" style="position:absolute; height:70%; top:15%; right:2%"/> 
+                	<img src="imagenes/i.png" style="position:absolute; height:70%; top:15%; left:2%"/> 
+                	<div id="err" style="position:absolute; left:12%;">Error:</div>
+                </div>
+                
+                <div id="erro" style="position:absolute; top:43%; width:80%; left:10%; height:52%; font-family:ArialN">
+                	<p>Email incorrecto</p>
+                </div>
+                
+            </div>   
+            
+            
       </div><!--fin login-->
       
       
       
       
       <div id="log" style="display:none">
-       	<div class="t1" style="width:100%; text-align:center; top:23%">Log in con tu cuenta</div>
+       	<div class="t1" style="width:100%; text-align:center; top:15%">Log in con tu cuenta</div>
             
-        <div class="campos" style="left:8%; width:84%; height:8%; top:30%">
+        <div class="campos" style="left:8%; width:84%; height:8%; top:21%">
         	<p class="crear" style="margin-left:5%">Email:</p>
             <input class="campo_texto" type="text">
         </div>
-        <div class="campos" style="left:8%; width:84%; height:8%; top:42%">
+        <div class="campos" style="left:8%; width:84%; height:8%; top:33%">
         	<p class="crear" style="margin-left:5%">Contraseña:</p>
             <input class="campo_texto" type="text">
         </div>
         
-        <div class="botones" style="left:8%; width:84%; height:8%; top:54%; background-color:#33508C; border-color:#33508C; cursor:pointer">
+            
+        <div id="bt_signup" class="botones" style="left:8%; width:84%; height:8%; top:45%; ; background:url(imagenes/bt_rosa.png) no-repeat; background-size:100% 100%; border:none; cursor:pointer">
+       	  <p class="bot" style="width:100%; text-align:center">Login</p>
+        </div>
+        
+        <div class="botones" style="left:8%; width:84%; height:8%; top:57%; background-color:#33508C; background:url(imagenes/bt_face.png) no-repeat; background-size:100% 100%; border:none; cursor:pointer">
    	    	<img src="imagenes/face.png" style="top:10%; height:80%; position:absolute; left:5%"/>
             <p class="red" style="width:80%; text-align:left; left:20%">Conectate con Facebook</p>
-        </div>
-            
-        <div id="bt_signup" class="botones" style="left:8%; width:84%; height:8%; top:66%; background-color:#C7004B; cursor:pointer">
-       	  <p class="bot" style="width:100%; text-align:center">Login</p>
         </div>
 
             
@@ -743,9 +760,8 @@ y cuando quieras.
         
         
         
-        <div id="centro" style="position:absolute; top:45%; width:84%; left:8%; height:35%; overflow:hidden">
-   	    	<img src="imagenes/mapota.png" height="100%" style="position:absolute;"/> 
-        </div>
+        <div id="centro" style="position:absolute; top:45%; width:84%; left:8%; height:35%; overflow:hidden;">
+   	    	<img src="imagenes/mapota.png" height="100%" style="position:absolute;"/>
         
         <div class="t1" style="width:100%; text-align:center; top:84%">
 Es posible que tu navegador solicite<br>
@@ -760,7 +776,9 @@ click en "Permitir" para continuar.
       <div id="mapas_grande" style="display:none; overflow:hidden">
       
       		<div id="contenido" style="position:absolute; width:1200px; height:600px; left:50%; margin-left:-600px; top:50%; margin-top:-300px;">
-				<img id="mapota" src="imagenes/mapota.png" style="height:900px"/> 
+                <div id="mapota">
+           	    	<img id="adidas" src="imagenes/adidasg.png" width="120" style="position:absolute; left:510px; top:530px; display:none"/> 
+               </div>
 			</div>
       
 <!--      
@@ -769,9 +787,24 @@ click en "Permitir" para continuar.
             
         <div class="gris" style="position:absolute; width:100%; height:8%; top:92%; background-color:#414042; z-index:10">
        	  <p class="crear" style="left:5%;">Galerias Vallarta PA</p>
-          <img src="imagenes/buscar.png" style="position:absolute; height:74%; right:25%; top:13%"/>
+          <img id="busc" src="imagenes/buscar.png" style="position:absolute; height:74%; right:25%; top:13%"/>
           <img src="imagenes/wifi.png" style="position:absolute; height:74%; right:5%; top:13%"/>
+          
+          <input id="bus" type="text" style="position:absolute; width:45%; height:60%; top:20%; left:5%; border:none; display:none; padding-left:5%">
+          
+          <script>
+          $('#busc').click(function(){
+		  	$('#bus').fadeIn(800)
+			if(document.getElementById('bus').value=="adidas"){
+				$('#adidas').fadeIn(100)
+				$('#mapota').animate({left:'1400px', top:'-100px'},600)
+			}
+		  })
+		  </script>
+          
         </div>
+        
+        
       </div><!--fin mapas-->
       
       
@@ -931,22 +964,39 @@ click en "Permitir" para continuar.
 				$('.es2').css('top', (height/110)+'px')
 				$('.menu_titulo').css('font-size', (height/16)+'px')
 				$('.cod').css('font-size', height/20+'px')
+				$('#err').css('font-size', height/26+'px')
+				$('#erro').css('font-size', height/40+'px')
+				$('#bus').css('font-size', height/40+'px')
 	  }
 	  
 	  
 	  var at=0
 	  var reg
 	  $('#bt_signup').click(function(){
-		 $('#votacion').css('z-index', '1')
-		 $('#log').css('z-index', '0')
-		 $('#login').css('z-index', '0')
 		  
-		 $('#votacion').show()
-		 $('#votacion').css('margin-left', '100%')
-		 $('#votacion').animate({marginLeft:'0%'}, 500)
-		 $('#div1, #div2, #alerta, #abrir_menu').fadeIn(800)
-		 $('#titulo_seccion').html('Votacion')
+		var email = $("input#c_email").val();
+		var filtro = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;	
+		if (!filtro.test(email)) {
+			$('#ale').fadeIn()
+		}else{
+		  
+			 $('#votacion').css('z-index', '1')
+			 $('#log').css('z-index', '0')
+			 $('#login').css('z-index', '0')
+			  
+			 $('#votacion').show()
+			 $('#votacion').css('margin-left', '100%')
+			 $('#votacion').animate({marginLeft:'0%'}, 500)
+			 $('#div1, #div2, #alerta, #abrir_menu').fadeIn(800)
+			 $('#titulo_seccion').html('Votacion')
+		}
       })
+	  
+	  
+	  $('#cierra').click(function(){
+		 $('#ale').fadeOut()
+      })
+	  
 	  
 	  $('#bt_log').click(function(){
 		 $('#log').show()
