@@ -101,6 +101,8 @@ body {
 	position: absolute;
 	background:url(../imagenes/azul.png) no-repeat;
 	background-size:100% 100%;
+	overflow:scroll;
+	overflow-x:hidden
 }
 #log {
 	width: 100%;
@@ -226,6 +228,15 @@ p {
 	transform: translate(0%, -50%);
 }
 
+.centro_v {
+	margin: 0;
+	position: absolute;
+	top: 50%;
+	-ms-transform: translate(0%, -50%);
+	-webkit-transform: translate(0%, -50%);
+	transform: translate(0%, -50%);
+}
+
 .campo_texto {
 	position: absolute;
 	height: 100%;
@@ -279,6 +290,10 @@ p {
 	font-family:Sessions;
 }
 
+.cod{
+	font-family: Consolas;
+	color:#fbb040
+}
 
 #mapota{
 	width:2220px;

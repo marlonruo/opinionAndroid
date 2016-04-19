@@ -1,14 +1,27 @@
 
-      		<div style="position:absolute; height:100%; width:100%; overflow:hidden">
-	  		<div class="t1" style="width:90%; left:5%; text-align:left; color:#000000; font-size:18px; line-height:18px; top:5%"><b>Texto de ejemplo</b><br><br>Suspendisse potenti. Duis vel massa eleifend augue aliquet scelerisque. Mauris pellentesque, metus et tempor tincidunt, mauris ipsum pharetra ligula, vel porta arcu quam eget nunc. Proin vestibulum, massa et euismod dapibus. <br><br>
+      		<div style="position:absolute; height:100%; width:100%; overflow:hidden;">
+           	<div style="position:absolute; width:100%; height:85%; background-image:url(imagenes/verde.png); background-size:100% 100%;">
+	  		<div class="t1" style="width:90%; left:5%; text-align:left; color:#fff; font-size:18px; line-height:18px; top:5%">
+           	  <b>¿Qué te parece este slogan?</b>
+                
+                <div class="botones" style="width:100%; border:2px solid #FFFFFF; margin-top:7%; position:relative; float:left">
+           	    	<img src="imagenes/grupo.jpg" width="100%" style="margin-top:5%; margin-bottom:2%"/> 
+                    <div class="slogan" style="margin-bottom:3%; margin-left:3%;">Slogan: Garantía Profesional. Servicio Público.</div>
+                </div>
+                
+                
+                <div style="width:100%; margin-top:10%; text-align:center; position:relative; float:left">
+Recuerda que sólo puedes<br>
+votar 1 vez por semana en la misma<br>
+campaña publicitaria</div>
 
-Vivamus sodales maximus mi, at lacinia turpis. Sed vitae pharetra ex, non cursus diam. Ut rhoncus ipsum justo, nec lacinia. <br><br>
-
-Sed in accumsan arcu, ac fermentum ante. Praesent vehicula malesuada diam porttitor suscipit. Morbi vestibulum augue ut condimentum tempus.
-
-</div>
-            <div class="estrellas" style="height:20%; width:100%; position:fixed; bottom:0px;">
-            	<div style="position:absolute; width:100%; height:100%;">
+			</div>
+			</div>
+            
+            
+            
+            <div class="estrellas" style="height:15%; width:100%; position:absolute; top:85%; background-color:#FFFFFF">
+            	<div class="centro_v" style="position:absolute; width:100%;">
        	    		<img id="ee1a" class="es2" src="imagenes/estrella2.png" style="position:absolute; left:10%; height:10px; opacity:0; cursor:pointer"/>
                     <img id="ee2a" class="es2" src="imagenes/estrella2.png" style="position:absolute; left:28%; height:10px; opacity:0; cursor:pointer"/> 
                     <img id="ee3a" class="es2" src="imagenes/estrella2.png" style="position:absolute; left:46%; height:10px; opacity:0; cursor:pointer"/> 
@@ -23,7 +36,7 @@ Sed in accumsan arcu, ac fermentum ante. Praesent vehicula malesuada diam portti
                 </div>
                 
                 <script>
-                	$('#ee1').mouseover(function(){
+                	$('#ee1').mouseenter(function(){
 						$('#ee1').css('opacity', '1')
 						$('#ee2').css('opacity', '0')
 						$('#ee3').css('opacity', '0')
@@ -35,7 +48,7 @@ Sed in accumsan arcu, ac fermentum ante. Praesent vehicula malesuada diam portti
 						$('#ee4a').css('opacity', '1')
 						$('#ee5a').css('opacity', '1')
 					})
-					$('#ee1').mouseover(function(){
+					$('#ee1').mouseenter(function(){
 						$('#ee1').css('opacity', '1')
 						$('#ee2').css('opacity', '0')
 						$('#ee3').css('opacity', '0')
@@ -47,7 +60,7 @@ Sed in accumsan arcu, ac fermentum ante. Praesent vehicula malesuada diam portti
 						$('#ee4a').css('opacity', '1')
 						$('#ee5a').css('opacity', '1')
 					})
-					$('#ee2').mouseover(function(){
+					$('#ee2').mouseenter(function(){
 						$('#ee1').css('opacity', '1')
 						$('#ee2').css('opacity', '1')
 						$('#ee3').css('opacity', '0')
@@ -59,7 +72,7 @@ Sed in accumsan arcu, ac fermentum ante. Praesent vehicula malesuada diam portti
 						$('#ee4a').css('opacity', '1')
 						$('#ee5a').css('opacity', '1')
 					})
-					$('#ee3').mouseover(function(){
+					$('#ee3').mouseenter(function(){
 						$('#ee1').css('opacity', '1')
 						$('#ee2').css('opacity', '1')
 						$('#ee3').css('opacity', '1')
@@ -71,7 +84,7 @@ Sed in accumsan arcu, ac fermentum ante. Praesent vehicula malesuada diam portti
 						$('#ee4a').css('opacity', '1')
 						$('#ee5a').css('opacity', '1')
 					})
-					$('#ee4').mouseover(function(){
+					$('#ee4').mouseenter(function(){
 						$('#ee1').css('opacity', '1')
 						$('#ee2').css('opacity', '1')
 						$('#ee3').css('opacity', '1')
@@ -83,7 +96,7 @@ Sed in accumsan arcu, ac fermentum ante. Praesent vehicula malesuada diam portti
 						$('#ee4a').css('opacity', '0')
 						$('#ee5a').css('opacity', '1')
 					})
-					$('#ee5').mouseover(function(){
+					$('#ee5').mouseenter(function(){
 						$('#ee1').css('opacity', '1')
 						$('#ee2').css('opacity', '1')
 						$('#ee3').css('opacity', '1')
